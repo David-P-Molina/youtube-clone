@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 const App = () => {
     <Router>
         <Box sx={{ backgroundColor: '#000'}}>
-            Navbar
+            <Navbar />
             <Routes>
                 <Route path="/" exact element={<Feed />} />
                 <Route path="/video/:id" element={<VideoDetail />} />
