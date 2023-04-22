@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Box } from '@mui/material'
-import { Navbar, Feed, VideoDetail, ChannelDetail, SearchFeed} from './components'
+import { Navbar, Feed, VideoDetail, ChannelDetail, SearchFeed } from './components'
 
 
 const App = () => {
