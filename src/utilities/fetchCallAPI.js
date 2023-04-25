@@ -1,15 +1,16 @@
 const axios = require('axios');
 
+const BASE_URL = 'https://youtube-v31.p.rapidapi.com/captions'
 
 const options = {
-  url: 'https://youtube-v31.p.rapidapi.com/captions',
+  url: BASE_URL,
   params: {
     part: 'snippet',
     videoId: 'M7FIvfx5J10'
   },
   headers: {
     'content-type': 'application/octet-stream',
-    'X-RapidAPI-Key': 'f187265ff7msh690d8f38bfaa5efp194c0djsn7d26ca9efcff',
+    'X-RapidAPI-Key': '',
     'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
   }
 };
