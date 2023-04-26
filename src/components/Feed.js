@@ -4,10 +4,12 @@ import { Sidebar, Videos } from '../components'
 import { fetchCallAPI } from '../utilities/fetchCallAPI'
 
 const Feed = () => {
+  const [selectedCategory, setSelectedCategory] = useState('New')
+  
   useEffect(() => {
     fetchCallAPI(`search?part=snippet&q=${selectedCategory}`)
-  }, [])
-  
+  }, [selectedCategory])
+
   return (
     <Stack sx={{ flexDirection: { sx: 'column', md: "row" } }}>
         <Box 
