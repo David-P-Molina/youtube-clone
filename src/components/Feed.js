@@ -5,10 +5,14 @@ import { fetchCallAPI } from '../utilities/fetchCallAPI'
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New')
-  
+  const [videos, setVideos] = useState([])
   useEffect(() => {
     fetchCallAPI(`search?part=snippet&q=${selectedCategory}`)
+      .then((data) => {
+        setVideos(data.items)
+      })
   }, [selectedCategory])
+  
 
   return (
     <Stack sx={{ flexDirection: { sx: 'column', md: "row" } }}>
@@ -31,9 +35,9 @@ const Feed = () => {
         <Typography 
           variant='h4'
           fontWeight="bold" mb={2} sx={{ color: 'white'}}>
-          New<span style={{ color: '#F31503'}}> Category Placeholder</span>
+          {selectedCategory} <span style={{ color: '#F31503'}}> Category Placeholder</span>
         </Typography>
-        <Videos videos={[]}/>
+        <Videos videos={videos}/>
       </Box>
     </Stack>
   )
