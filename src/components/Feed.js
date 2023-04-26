@@ -5,12 +5,13 @@ import { fetchCallAPI } from '../utilities/fetchCallAPI'
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New')
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState(null)
   useEffect(() => {
     fetchCallAPI(`search?part=snippet&q=${selectedCategory}`)
       .then((data) => {
         setVideos(data.items)
       })
+      .catch((error) => console.log(error))
   }, [selectedCategory])
   
 
