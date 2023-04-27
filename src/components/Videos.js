@@ -10,10 +10,9 @@ const Videos = ({videos}) => {
       justifyContent="start"
       gap={2}>
         {videos.map((item, id) => (
-          <Box
-            key={id}>
-              {item.id.videoID && <VideoCard video={item}/>}
-              {item.id.channelId && <ChannelCard channelDetail={item}/>}
+          <Box key={id}>
+            {item.id.videoId && <VideoCard video={item}/>}
+            {item.snippet.channelId && <ChannelCard channelDetail={item}/>}
           </Box>
         ))}
     </Stack>
