@@ -7,18 +7,25 @@ import { fetchCallAPI } from '../utilities/fetchCallAPI'
 const ChannelDetail = () => {
   const [ videos, setVideos ] = useState([])
   const [ channelDetails, setChannelDetails ] = useState(null)
+
   const { id } = useParams()
 
   useEffect(() => {
-    const getVideos = fetchCallAPI()
-    const getChannelDetails = fetchCallAPI
+    const fetchDetails = async () => {
+      const data = await fetchCallAPI(`channels?part=snippet&id=${id}`)
+      console.log(data.items[0])
+      setChannelDetails(data?.items[0])
+    }
+    fetchDetails()
+    // const getVideos = fetchCallAPI()
+    // const getChannelDetails = fetchCallAPI
   }, [id])
   
 
   return (
     <Box>
-      <ChannelCard/>
-      <Videos />
+      <ChannelCard channelDetail={channelDetails}/>
+      {/* <Videos /> */}
     </Box>
   )
 }
