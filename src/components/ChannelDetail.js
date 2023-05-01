@@ -31,7 +31,7 @@ const ChannelDetail = () => {
           zIndex: 10,
           height: '300px'
         }}/>
-        <ChannelCard channelDetail={channelDetails}/>
+        <ChannelCard channelDetail={channelDetails} marginTop='-95px'/>
         <Videos videos={videos}/>
       </Box>
     </Box>
