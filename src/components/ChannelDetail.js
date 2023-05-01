@@ -12,20 +12,20 @@ const ChannelDetail = () => {
 
   useEffect(() => {
     const fetchDetails = async () => {
-      const data = await fetchCallAPI(`channels?part=snippet&id=${id}`)
-      console.log(data.items[0])
-      setChannelDetails(data?.items[0])
+      const channelData = await fetchCallAPI(`channels?part=snippet&id=${id}`)
+      setChannelDetails(channelData?.items[0])
+
+      const videoData = await fetchCallAPI(`search?channelId=${id}&part=snippet%2Cid&order=date`)
+      setVideos(videoData?.items)
     }
     fetchDetails()
-    // const getVideos = fetchCallAPI()
-    // const getChannelDetails = fetchCallAPI
   }, [id])
   
 
   return (
     <Box>
       <ChannelCard channelDetail={channelDetails}/>
-      {/* <Videos /> */}
+      <Videos videos={videos}/>
     </Box>
   )
 }
