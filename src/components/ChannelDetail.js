@@ -31,8 +31,8 @@ const ChannelDetail = () => {
           zIndex: 10,
           height: '300px'
         }}/>
-        {/* <ChannelCard channelDetail={channelDetails}/>
-        <Videos videos={videos}/> */}
+        <ChannelCard channelDetail={channelDetails}/>
+        <Videos videos={videos}/>
       </Box>
     </Box>
   )
