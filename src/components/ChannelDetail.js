@@ -23,9 +23,17 @@ const ChannelDetail = () => {
   
 
   return (
-    <Box>
-      <ChannelCard channelDetail={channelDetails}/>
-      <Videos videos={videos}/>
+    <Box minHeight="95vh">
+      <Box>
+        <div style={{
+          background: 
+            'linear-gradient(90deg, rgba(2, 81, 89,1) 0%, rgba(166, 116, 88,1) 100%, rgba(196, 238, 242,1) 100%)',
+          zIndex: 10,
+          height: '300px'
+        }}/>
+        {/* <ChannelCard channelDetail={channelDetails}/>
+        <Videos videos={videos}/> */}
+      </Box>
     </Box>
   )
 }
