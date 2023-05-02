@@ -6,7 +6,7 @@ import { fetchCallAPI } from '../utilities/fetchCallAPI'
 const SearchFeed = () => {
   const [videos, setVideos] = useState([])
   useEffect(() => {
-    fetchCallAPI(`search?part=snippet&q=${}`)
+    fetchCallAPI(`search?part=snippet&q=`)
       .then((data) => {
         setVideos(data.items)
       })
@@ -18,7 +18,7 @@ const SearchFeed = () => {
       <Typography 
         variant='h4'
         fontWeight="bold" mb={2} sx={{ color: 'white'}}>
-        {selectedCategory} <span style={{ color: '#F31503'}}> Category Placeholder</span>
+        Search Results for:  <span style={{ color: '#F31503'}}> Videos</span>
       </Typography>
       <Videos videos={videos}/>
     </Box>
