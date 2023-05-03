@@ -14,8 +14,8 @@ const VideoDetail = () => {
       .then((data) => setVideoDetail(data.items[0]))
     }, [id]);
     
-  const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetail
-  
+    //Need to work on destructuring videoDetails nested attributes
+   
   return (
     <Box minHeight="95vh">
       <Stack>
@@ -23,14 +23,14 @@ const VideoDetail = () => {
           <Box sx={{ width: '100%', position: 'sticky',top: '85px'}}>
           <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
             <Typography color="#FFF" variant="h5" fontWeight="bold" padding={2}> 
-              {title}
+              title
             </Typography>
             <Stack direction="row" justifyContent="space-between" sx={{ color: '#FFF' }} py={1} px={2}>
-              <Link to={`channel/${channelId}`}>
+              {/* <Link to={`channel/${channelId}`}> */}
                 <Typography>
-                  {channelTitle}
+                  channelTitle
                 </Typography>
-              </Link>
+              {/* </Link> */}
             </Stack>
           </Box>
 
