@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Alert } from '@mui/material'
 import { Videos } from '../components'
 import { fetchCallAPI } from '../utilities/fetchCallAPI'
 import { useParams } from 'react-router-dom'
 
 const SearchFeed = () => {
   const { searchTerm } = useParams()
-  const [ videos, setVideos] = useState([])
+  const [ videos, setVideos ] = useState([])
+  const [ errors, setErrors ] = useState(null)
   useEffect(() => {
     fetchCallAPI(`search?part=snippet&q=${searchTerm}`)
       .then((data) => {
         setVideos(data.items)
+        setErrors()
       })
-      .catch((error) => console.log(error))
+      .catch((error) => setErrors(error))
   }, [searchTerm])
   
   return (
@@ -22,6 +24,7 @@ const SearchFeed = () => {
         fontWeight="bold" mb={2} sx={{ color: 'white'}}>
         Search Results for: <span style={{ color: '#F31503'}}>{searchTerm} Videos</span>
       </Typography>
+      { errors != null && <Alert severity="error">{errors}</Alert>}
       <Videos videos={videos}/>
     </Box>
   )
