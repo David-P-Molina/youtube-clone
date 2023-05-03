@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography, Alert } from '@mui/material'
 import { Sidebar, Videos } from '../components'
 import { fetchCallAPI } from '../utilities/fetchCallAPI'
 
 const Feed = () => {
-  const [selectedCategory, setSelectedCategory] = useState('New')
-  const [videos, setVideos] = useState([])
+  const [ selectedCategory, setSelectedCategory ] = useState('New')
+  const [ videos, setVideos ] = useState([])
+  const [ errors, setErrors ] = useState(null)
   useEffect(() => {
     fetchCallAPI(`search?part=snippet&q=${selectedCategory}`)
       .then((data) => {
         setVideos(data.items)
       })
-      .catch((error) => console.log(error))
+      .catch((error) => setErrors(error))
   }, [selectedCategory])
   
 
@@ -38,6 +39,7 @@ const Feed = () => {
           fontWeight="bold" mb={2} sx={{ color: 'white'}}>
           {selectedCategory} <span style={{ color: '#F31503'}}> Videos</span>
         </Typography>
+        { errors && <Alert severity="error">{errors}</Alert>}
         <Videos videos={videos}/>
       </Box>
     </Stack>
