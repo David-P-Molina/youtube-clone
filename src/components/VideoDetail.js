@@ -10,6 +10,9 @@ import { Video } from './'
 const VideoDetail = () => {
   const { videoId } = useParams();
 
+  useEffect(() => {
+    fetchCallAPI(`video?part=snippet,statistics&id=${videoId}`)
+  }, [videoId])
   
   return (
     <Box minHeight="95vh">
