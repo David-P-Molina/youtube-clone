@@ -9,9 +9,18 @@ import { Video } from './'
 
 const VideoDetail = () => {
   const { videoId } = useParams();
-  return (
-    <Box>
 
+  
+  return (
+    <Box minHeight="95vh">
+      <Stack>
+        <Box flex={1}>
+          <Box sx={{ width: '100%', position: 'sticky',top: '85px'}}>
+            <ReactPlayer />
+          </Box>
+
+        </Box>
+      </Stack>
     </Box>
   )
 }
