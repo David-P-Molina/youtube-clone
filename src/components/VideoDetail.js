@@ -14,8 +14,8 @@ const VideoDetail = () => {
       .then((data) => setVideoDetail(data.items[0]))
     }, [id]);
     if(!videoDetail?.snippet) return 'Loading...'
-    const { snippet: {title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetail;
-
+    const { snippet: {title, channelId, channelTitle, description }, statistics: { viewCount, likeCount } } = videoDetail;
+    console.log(videoDetail)
   return (
     <Box minHeight="95vh">
       <Stack>
@@ -25,16 +25,19 @@ const VideoDetail = () => {
             <Typography color="#FFF" variant="h5" fontWeight="bold" padding={2}> 
               {title}
             </Typography>
+            <Typography color="#FFF" variant="body2" padding={2} marginTop={-4}>
+              {description}
+            </Typography>
             <Stack direction="row" justifyContent="space-between" sx={{ color: '#FFF' }} py={1} px={2}>
               <Link to={`/channel/${channelId}`}>
-                <Typography variant='subtitle1' sx={{ sm: 'subtitle1', md: 'h6'}} color="#FFF">
+                <Typography variant="subtitle1" sx={{ sm: 'subtitle1', md: 'h6'}} color="#FFF">
                   {channelTitle}
                   <CheckCircle sx={{ fontSize: '12px', color: 'gray', ml: '5px'}} />
                 </Typography>
               </Link>
               <Stack>
-                <Typography variant='body1'>
-
+                <Typography variant='body1' sx={{ opacity: 0.7}}>
+                  {parseInt(viewCount).toLocaleString()} views
                 </Typography>
               </Stack>
             </Stack>
