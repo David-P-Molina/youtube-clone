@@ -9,13 +9,17 @@ import { fetchCallAPI } from '../utilities/fetchCallAPI';
 const VideoDetail = () => {
   const { id } = useParams();
   const [ videoDetail, setVideoDetail ] = useState("")
+  const [ videos, setVideos ] = useState([])
   useEffect(() => {
     fetchCallAPI(`videos?part=snippet,statistics&id=${id}`)
       .then((data) => setVideoDetail(data.items[0]))
+    fetchCallAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
+      .then((data) => setVideos(data.items[0]))
     }, [id]);
+  
     if(!videoDetail?.snippet) return 'Loading...'
     const { snippet: {title, channelId, channelTitle, description }, statistics: { viewCount, likeCount } } = videoDetail;
-    console.log(videoDetail)
+  
   return (
     <Box minHeight="95vh">
       <Stack>
