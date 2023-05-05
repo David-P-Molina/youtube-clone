@@ -3,6 +3,7 @@ import React from 'react'
 import { VideoCard, ChannelCard } from '../components'
 
 const Videos = ({videos, direction}) => {
+  if(!videos?.length) return 'Loading...'
   return (
     <Stack
       direction={direction || "row"}
